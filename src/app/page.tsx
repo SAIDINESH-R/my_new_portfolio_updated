@@ -4,41 +4,45 @@ import { useState, useEffect } from "react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Splash from "@/components/Splash";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ExternalLink, Download, Briefcase, Award, GraduationCap, Code } from "lucide-react";
+import { ChevronDown, ExternalLink, Download, Briefcase, GraduationCap, Code, Award } from "lucide-react";
 
-// Resume Data Object
+// Updated Resume Data Object
 const RESUME = {
   basics: {
-    name: "SAI DINESH RACHAKONDA",
-    title: "Software Development Engineer",
-    location: "New York",
+    name: "SAI DINESH",
+    title: "Software Engineer",
+    location: "USA",
     email: "saidinesh.r@outlook.com",
     phone: "+1-716-923-5487",
-    summary: "Software Development Engineer with 3+ years of experience developing backend applications for financial and e-commerce systems using Java, Spring Boot, Kafka, and AWS. Worked on REST APIs, database tuning, and deployments with Docker and Kubernetes. Completed an MS in Computational Science with hands-on experience in backend development and distributed systems."
+    summary: "Software Engineer with nearly 4 years of experience building scalable backend systems, event-driven microservices, and cloud-native applications across banking, payments, and high-traffic commerce domains. Hands-on expertise in Java, Spring Boot, Kafka, PostgreSQL, Redis, AWS, Kubernetes, and Snowflake, with a strong track record of improving throughput, reducing latency, and maintaining high system availability. Experienced in developing real-time payment and treasury platforms, optimizing APIs and database performance, and collaborating with cross-functional teams to deliver reliable, high-impact solutions"
   },
   impactHighlights:[
-    "Reduced debugging time by 30% across 5 critical projects",
+    "Increased processing throughput by 40% with event-driven pipelines",
     "Processed ~150,000 daily payment transactions",
-    "Served 2M+ EU users on real-time workflows"
+    "Served 2M+ EU users on real-time order workflows"
   ],
   experience:[
     {
       id: 1,
-      company: "University at Buffalo",
-      role: "Software Engineer – EAS, UBIT",
-      dates: "Jan 2025 – Present",
-      location: "New York(Remote)",
+      company: "HSBC",
+      role: "Software Engineer",
+      dates: "Mar 2025 – Present",
+      location: "Buffalo",
       bullets:[
-        "Reduced debugging time by 30% across 5 critical software projects by redesigning Java applications into modular components using OOP principles, improving maintainability and scalability",
-        "Unified backend workflows and NoSQL integration by developing RESTful microservices with Spring Boot and Spring Cloud for shared application services",
-        "Lowered deployment errors by 25% in Linux-based release environments by automating CI/CD pipelines with Bash scripting and Kubernetes",
-        "Strengthened backend functional validation by implementing Selenium-based API testing frameworks in the release process"
+        "Engineered real-time, event-driven data pipelines using Java, Spring Boot, and Kafka to synchronize commercial payment transactions, treasury cash positions, and corporate account balances, increasing processing throughput by 40%",
+        "Introduced GraphQL APIs to simplify data access patterns, reducing redundant client calls by 20% and improving efficiency for downstream finance and reporting applications",
+        "Boosted application performance by implementing Redis-based distributed caching, reducing database load and cutting latency by 50% across high-volume payment workflows",
+        "Enhanced system scalability through ExecutorService, CompletableFuture, and JVM tuning (heap sizing, garbage collection), enabling stable processing of millions of transactions during high-demand cycles",
+        "Built and deployed scalable treasury and payment services on AWS (EKS, MSK, ElastiCache, DynamoDB) with auto-scaling and multi-AZ architecture, maintaining 99.9% service availability during peak transaction periods",
+        "Established Snowflake as a centralized analytics layer for treasury and payment data, accelerating reconciliation, reporting, and operational insight generation for finance teams",
+        "Partnered with portfolio analytics, risk, and finance teams to refine commercial settlement reconciliation workflows, reducing discrepancies and improving reporting accuracy and turnaround time",
+        "Incorporated GitHub Copilot and AI-assisted development workflows to streamline coding, reduce repetitive engineering effort, and raise developer productivity by 25%"
       ]
     },
     {
       id: 2,
-      company: "Wipro Ltd",
-      role: "Software Engineer (Client: Metro Bank)",
+      company: "Metro bank",
+      role: "Software Engineer",
       dates: "Aug 2022 – Jul 2023",
       location: "Bengaluru",
       bullets:[
@@ -52,9 +56,9 @@ const RESUME = {
     {
       id: 3,
       company: "Wipro Ltd",
-      role: "Software Engineer (Client: Delivery Hero)",
+      role: "Software Engineer",
       dates: "Aug 2021 – Jul 2022",
-      location: "Bengaluru",
+      location: "Hyderabad",
       bullets:[
         "Served 2M+ EU users on real-time order and inventory workflows by building a microservices architecture with Spring Boot for high-traffic food delivery operations",
         "Dropped PostgreSQL and MongoDB query latency by 45% for order retrieval and inventory lookups through targeted caching and indexing",
@@ -82,42 +86,25 @@ const RESUME = {
         "Modeled a star-schema data warehouse with fact and dimension tables for dimensions to support reporting and analytics",
         "Created a Looker Studio dashboard that highlighted usage trends, including 209,048 electric-bike rides, 52,263 classic-bike rides, and an average ride duration of 12.71 minutes"
       ]
-    },
-    {
-      title: "E-Commerce Backend Simulation",
-      link: "Github Link",
-      bullets:[
-        "Created Spring Boot backend with MySQL for comprehensive product, order, and inventory management functionality",
-        "Integrated Kafka messaging for asynchronous updates and Role-Based Access Control (RBAC) for enhanced security",
-        "Built automated test scripts to monitor inventory workflows, and collaborated with development teams to troubleshoot prod. issues"
-      ]
     }
   ],
   skills:[
     { category: "Languages", items: "Java, Python, SQL, JavaScript" },
-    { category: "Backend", items: "Spring Boot, REST APIs, Microservices, JPA, Hibernate" },
+    { category: "Backend & APIs", items: "Spring Boot, Spring Framework, Microservices, REST APIs, GraphQL, JPA, Hibernate" },
+    { category: "Messaging & Concurrency", items: "Apache Kafka, RabbitMQ, ExecutorService, CompletableFuture" },
     { category: "Frontend", items: "React.js" },
-    { category: "Cloud/DevOps", items: "AWS (EC2, RDS, S3), Docker, Kubernetes, Jenkins, GitLab CI/CD" },
-    { category: "Databases", items: "PostgreSQL, MongoDB, MySQL" },
-    { category: "Practices", items: "SDLC, TDD, Secure and maintainable code" },
-    { category: "Messaging", items: "Kafka, RabbitMQ" },
-    { category: "Testing/Security", items: "JUnit, Mockito, TDD, OAuth 2.0" },
-    { category: "ML/Scientific", items: "PyTorch, torchdiffeq, scikit-learn, Neural Networks" },
-    { category: "Methodologies", items: "Agile, TDD, OAuth 2.0, Swagger, Cross-disciplinary Collaboration" }
+    { category: "Cloud & DevOps", items: "AWS (EKS, MSK, ElastiCache, DynamoDB, EC2, RDS, S3), Docker, Kubernetes, Jenkins, GitLab CI/CD" },
+    { category: "Databases & Data Platforms", items: "PostgreSQL, MongoDB, MySQL, Redis, Snowflake" },
+    { category: "Testing, Security & Monitoring", items: "JUnit, Mockito, OAuth 2.0, Spring Boot Actuator, Splunk, Log4j" },
+    { category: "Practices & Methodologies", items: "SDLC, Agile, TDD, Secure Coding, Performance Optimization, Cross-Functional Collaboration" }
   ],
   education:[
-    { degree: "Masters in Computational Science", school: "University at Buffalo", date: "Feb 2025" },
-    { degree: "Bachelors in Electronics and communication", school: "KL University", date: "May 2021" }
-  ],
-  achievements:[
-    "Amazon Certified — Amazon S3 with AWS SDK for Python",
-    "Wipro Certified — Spring Boot Level 2",
-    "Wipro Certified — Microservices Level 2"
+    { degree: "Masters in Computational Science", school: "University at Buffalo", date: "Feb 2025" }
   ]
 };
 
 export default function Home() {
-  const[showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
   const [activeExp, setActiveExp] = useState<number | null>(1);
 
   useEffect(() => {
@@ -135,7 +122,7 @@ export default function Home() {
         {/* Navigation / Header */}
         <header className="fixed top-0 w-full border-b border-white/5 bg-black/40 backdrop-blur-md z-40">
           <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span className="font-bold tracking-widest text-white">SDR</span>
+            <span className="font-bold tracking-widest text-white">SD</span>
             <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-300">
               <a href="#experience" className="hover:text-blue-400 transition-colors">Experience</a>
               <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
@@ -229,11 +216,10 @@ export default function Home() {
                     >
                       <ul className="space-y-3 mt-4 border-t border-white/10 pt-6">
                         {exp.bullets.map((bullet, i) => {
-                          const hasMetric = /\d+%|\d+M\+|\d+,\d+/.test(bullet);
                           return (
                             <li key={i} className="flex items-start gap-3 text-slate-300 leading-relaxed">
                               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                              <span dangerouslySetInnerHTML={{ __html: bullet.replace(/(\d+%|\d+M\+|\d+,\d+)/g, '<span class="text-white font-bold px-1 rounded bg-blue-500/20">$1</span>') }} />
+                              <span dangerouslySetInnerHTML={{ __html: bullet.replace(/(\d+%|\d+M\+|\d+,\d+|99\.9%)/g, '<span class="text-white font-bold px-1 rounded bg-blue-500/20">$1</span>') }} />
                             </li>
                           );
                         })}
@@ -258,7 +244,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold">Projects</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {RESUME.projects.map((proj, idx) => (
               <motion.div
                 key={idx}
@@ -294,7 +280,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold">Technical Skills</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {RESUME.skills.map((skill, idx) => (
               <div key={idx} className="p-5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
                 <h4 className="text-blue-400 font-semibold mb-2">{skill.category}</h4>
@@ -304,63 +290,33 @@ export default function Home() {
           </div>
         </section>
 
-        {/* EDUCATION & ACHIEVEMENTS */}
+        {/* EDUCATION */}
         <section id="education" className="py-24 max-w-6xl mx-auto px-6 border-t border-white/10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Education */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <GraduationCap className="text-blue-500" size={28} />
-                <h2 className="text-3xl font-bold">Education</h2>
-              </div>
-              <div className="space-y-6">
-                {RESUME.education.map((edu, idx) => (
-                  <div key={idx} className="relative pl-6 border-l-2 border-white/10">
-                    <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-[7px] top-1.5 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
-                    <h3 className="text-lg font-bold text-white">{edu.degree}</h3>
-                    <p className="text-slate-400">{edu.school}</p>
-                    <p className="text-sm text-slate-500 font-mono mt-1">{edu.date}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Achievements */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <Award className="text-purple-500" size={28} />
-                <h2 className="text-3xl font-bold">Achievements</h2>
-              </div>
-              <div className="space-y-4">
-                {RESUME.achievements.map((ach, idx) => {
-                  const [issuer, cert] = ach.split(" — ");
-                  return (
-                    <div key={idx} className="p-4 rounded-xl bg-gradient-to-r from-white/5 to-transparent border border-white/10 flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 border border-purple-500/30">
-                        <Award size={18} className="text-purple-400" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-slate-200 text-sm md:text-base">{cert || ach}</p>
-                        {cert && <p className="text-xs text-slate-500">{issuer}</p>}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <GraduationCap className="text-blue-500" size={28} />
+              <h2 className="text-3xl font-bold">Education</h2>
+            </div>
+            <div className="space-y-6">
+              {RESUME.education.map((edu, idx) => (
+                <div key={idx} className="relative pl-6 border-l-2 border-white/10">
+                  <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-[7px] top-1.5 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                  <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
+                  <p className="text-lg text-slate-400">{edu.school}</p>
+                  <p className="text-sm text-slate-500 font-mono mt-2">{edu.date}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* Footer */}
-        <footer className="py-8 text-center border-t border-white/10 text-slate-500 text-sm">
+        <footer className="py-8 text-center border-t border-white/10 text-slate-500 text-sm bg-black/50">
           <p>{RESUME.basics.name} &copy; {new Date().getFullYear()} • Built with Next.js & Framer Motion</p>
           <div className="flex justify-center gap-4 mt-2">
             <a href={`mailto:${RESUME.basics.email}`} className="hover:text-white transition">Email</a>
