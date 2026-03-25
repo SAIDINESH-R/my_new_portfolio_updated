@@ -131,53 +131,6 @@ export default function Home() {
             </nav>
           </div>
         </header>
-
-        {/* HERO SECTION */}
-        <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={!showSplash ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mb-4">
-              {RESUME.basics.name}
-            </h1>
-            <h2 className="text-2xl md:text-3xl text-blue-400 font-medium mb-6">
-              {RESUME.basics.title}
-            </h2>
-            <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-8">
-              {RESUME.basics.summary}
-            </p>
-
-            <div className="flex flex-wrap gap-4 mb-16">
-              <a href="#experience" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                View Experience
-              </a>
-              <a
-                href="/Sai_Dinesh_Resume.pdf"
-                download="Sai_Dinesh_Resume.pdf"
-                className="px-6 py-3 border border-white/10 hover:bg-white/5 bg-white/5 backdrop-blur-md text-white rounded-lg font-medium transition-all flex items-center gap-2"
-              >
-                <Download size={18} /> Download Resume
-              </a>
-
-              {/* TOP 3 IMPACT STRIP */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {RESUME.impactHighlights.map((highlight, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                    <div className="flex items-start gap-3">
-                      <Award className="text-blue-400 shrink-0 mt-1" size={20} />
-                      <p className="text-sm text-slate-300">{highlight}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-          </motion.div>
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-            <ChevronDown size={32} />
-          </div>
-        </section>
-
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="py-24 max-w-6xl mx-auto px-6">
           <motion.div
