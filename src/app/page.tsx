@@ -16,19 +16,19 @@ const RESUME = {
     phone: "+1-716-923-5487",
     summary: "Software Engineer with nearly 4 years of experience building scalable backend systems, event-driven microservices, and cloud-native applications across banking, payments, and high-traffic commerce domains. Hands-on expertise in Java, Spring Boot, Kafka, PostgreSQL, Redis, AWS, Kubernetes, and Snowflake, with a strong track record of improving throughput, reducing latency, and maintaining high system availability. Experienced in developing real-time payment and treasury platforms, optimizing APIs and database performance, and collaborating with cross-functional teams to deliver reliable, high-impact solutions"
   },
-  impactHighlights: [
+  impactHighlights:[
     "Increased processing throughput by 40% with event-driven pipelines",
     "Processed ~150,000 daily payment transactions",
     "Served 2M+ EU users on real-time order workflows"
   ],
-  experience: [
+  experience:[
     {
       id: 1,
       company: "HSBC",
       role: "Software Engineer",
       dates: "Mar 2025 – Present",
       location: "Buffalo",
-      bullets: [
+      bullets:[
         "Engineered real-time, event-driven data pipelines using Java, Spring Boot, and Kafka to synchronize commercial payment transactions, treasury cash positions, and corporate account balances, increasing processing throughput by 40%",
         "Introduced GraphQL APIs to simplify data access patterns, reducing redundant client calls by 20% and improving efficiency for downstream finance and reporting applications",
         "Boosted application performance by implementing Redis-based distributed caching, reducing database load and cutting latency by 50% across high-volume payment workflows",
@@ -45,7 +45,7 @@ const RESUME = {
       role: "Software Engineer",
       dates: "Aug 2022 – Jul 2023",
       location: "Bengaluru",
-      bullets: [
+      bullets:[
         "Processed ~150,000 payment transactions per day across BACS and bill payment workflows by developing Java services on the Spring framework for core banking systems",
         "Lowered inter-service timeout and retry failures by ~20% in a multi-service banking environment by shifting communication to REST APIs and Apache Kafka",
         "Improved response times by ~30% and increased throughput for payment workloads by tuning PostgreSQL queries, indexing, and caching",
@@ -59,7 +59,7 @@ const RESUME = {
       role: "Software Engineer",
       dates: "Aug 2021 – Jul 2022",
       location: "Hyderabad",
-      bullets: [
+      bullets:[
         "Served 2M+ EU users on real-time order and inventory workflows by building a microservices architecture with Spring Boot for high-traffic food delivery operations",
         "Dropped PostgreSQL and MongoDB query latency by 45% for order retrieval and inventory lookups through targeted caching and indexing",
         "Coordinated 1M+ daily events for order updates and cross-regional inventory sync using Apache Kafka and RabbitMQ pipelines",
@@ -68,11 +68,11 @@ const RESUME = {
       ]
     }
   ],
-  projects: [
+  projects:[
     {
       title: "Smart Bank – Modular Banking System",
       link: "Github Link",
-      bullets: [
+      bullets:[
         "Developed Spring Boot microservices architecture with secure REST APIs to handle core banking operations and financial transactions",
         "Deployed application using Docker containerization with PostgreSQL database integration for scalable system infrastructure",
         "Implemented test automation tools such as JUnit and Mockito to validate and verify software modules, producing bug reports and refining test cases through iterative feedback"
@@ -81,14 +81,14 @@ const RESUME = {
     {
       title: "Lyft Bay Wheels ETL Pipeline",
       link: "Github Link",
-      bullets: [
+      bullets:[
         "Built an end-to-end ETL pipeline with Python, Mage AI, BigQuery, and GCP to process and analyze 261,311 Bay Wheels ride records",
         "Modeled a star-schema data warehouse with fact and dimension tables for dimensions to support reporting and analytics",
         "Created a Looker Studio dashboard that highlighted usage trends, including 209,048 electric-bike rides, 52,263 classic-bike rides, and an average ride duration of 12.71 minutes"
       ]
     }
   ],
-  skills: [
+  skills:[
     { category: "Languages", items: "Java, Python, SQL, JavaScript" },
     { category: "Backend & APIs", items: "Spring Boot, Spring Framework, Microservices, REST APIs, GraphQL, JPA, Hibernate" },
     { category: "Messaging & Concurrency", items: "Apache Kafka, RabbitMQ, ExecutorService, CompletableFuture" },
@@ -98,7 +98,7 @@ const RESUME = {
     { category: "Testing, Security & Monitoring", items: "JUnit, Mockito, OAuth 2.0, Spring Boot Actuator, Splunk, Log4j" },
     { category: "Practices & Methodologies", items: "SDLC, Agile, TDD, Secure Coding, Performance Optimization, Cross-Functional Collaboration" }
   ],
-  education: [
+  education:[
     { degree: "Masters in Computational Science", school: "University at Buffalo", date: "Feb 2025" }
   ]
 };
@@ -111,7 +111,7 @@ export default function Home() {
     document.body.style.overflow = "hidden";
     const timer = setTimeout(() => setShowSplash(false), 1800);
     return () => clearTimeout(timer);
-  }, []);
+  },[]);
 
   return (
     <>
@@ -131,6 +131,54 @@ export default function Home() {
             </nav>
           </div>
         </header>
+
+        {/* HERO SECTION */}
+        <section className="min-h-screen flex flex-col justify-center max-w-6xl mx-auto px-6 pt-24 pb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={!showSplash ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mb-4">
+              {RESUME.basics.name}
+            </h1>
+            <h2 className="text-2xl md:text-3xl text-blue-400 font-medium mb-6">
+              {RESUME.basics.title}
+            </h2>
+            <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-8">
+              {RESUME.basics.summary}
+            </p>
+
+            <div className="flex flex-wrap gap-4 mb-16">
+              <a href="#experience" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                View Experience
+              </a>
+              <a 
+                href="/Sai_Dinesh_Resume.pdf" 
+                download="Sai_Dinesh_Resume.pdf"
+                className="px-6 py-3 border border-white/10 hover:bg-white/5 bg-white/5 backdrop-blur-md text-white rounded-lg font-medium transition-all flex items-center gap-2"
+              >
+                <Download size={18} /> Download Resume
+              </a>
+            </div>
+
+            {/* TOP 3 IMPACT STRIP */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {RESUME.impactHighlights.map((highlight, idx) => (
+                <div key={idx} className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <div className="flex items-start gap-3">
+                    <Award className="text-blue-400 shrink-0 mt-1" size={20} />
+                    <p className="text-sm text-slate-300">{highlight}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <ChevronDown size={32} />
+          </div>
+        </section>
+
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="py-24 max-w-6xl mx-auto px-6">
           <motion.div
